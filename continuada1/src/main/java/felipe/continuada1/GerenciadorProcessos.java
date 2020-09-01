@@ -20,8 +20,8 @@ public class GerenciadorProcessos extends javax.swing.JFrame {
     Double avgValCPU = 0.0;
     Double totalCPU = 0.0;
     
-    Integer maxValRAM = 0;
-    Integer minValRAM = 100;
+    Double maxValRAM = 0.0;
+    Double minValRAM = 8.00;
     Double avgValRAM = 0.0;
     Double totalRAM = 0.0;
     
@@ -73,11 +73,11 @@ public class GerenciadorProcessos extends javax.swing.JFrame {
 
         jLabel2.setText("Processador CPU");
 
-        valRAM.setText("0% USO (0.00 GB de 8.00 GB)");
+        valRAM.setText("0.00 GB");
 
         jLabel4.setText("Memória RAM");
 
-        valDISCO.setText("0.0 MB/s de 100 MB/s");
+        valDISCO.setText("0.0 MB/s");
 
         jLabel6.setText("Disco HDD");
 
@@ -125,19 +125,24 @@ public class GerenciadorProcessos extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addComponent(valCPU)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(barRAM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(avgRAM)
+                            .addComponent(minRAM)
+                            .addComponent(maxRAM)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addComponent(valRAM)))
+                        .addGap(97, 97, 97))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(barRAM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(valRAM)
-                    .addComponent(avgRAM)
-                    .addComponent(minRAM)
-                    .addComponent(maxRAM))
-                .addGap(78, 78, 78)
+                        .addGap(161, 161, 161)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)
@@ -147,9 +152,11 @@ public class GerenciadorProcessos extends javax.swing.JFrame {
                     .addComponent(maxDISCO)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(barDISCO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(valDISCO))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(valDISCO)
+                                .addGap(43, 43, 43)))))
                 .addGap(40, 40, 40))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -161,36 +168,35 @@ public class GerenciadorProcessos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(valCPU)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(barCPU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addGap(38, 38, 38)
-                        .addComponent(maxCPU)
-                        .addGap(18, 18, 18)
-                        .addComponent(minCPU)
-                        .addGap(18, 18, 18)
-                        .addComponent(avgCPU))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(valCPU)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(barCPU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel2)
+                            .addGap(38, 38, 38)
+                            .addComponent(maxCPU)
+                            .addGap(18, 18, 18)
+                            .addComponent(minCPU)
+                            .addGap(18, 18, 18)
+                            .addComponent(avgCPU))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(valDISCO)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(barDISCO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel6)
+                            .addGap(38, 38, 38)
+                            .addComponent(maxDISCO)
+                            .addGap(18, 18, 18)
+                            .addComponent(minDISCO)
+                            .addGap(18, 18, 18)
+                            .addComponent(avgDISCO)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(valDISCO)
+                        .addComponent(valRAM)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(barDISCO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
-                        .addGap(38, 38, 38)
-                        .addComponent(maxDISCO)
-                        .addGap(18, 18, 18)
-                        .addComponent(minDISCO)
-                        .addGap(18, 18, 18)
-                        .addComponent(avgDISCO))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(valRAM)
-                                .addGap(32, 32, 32))
-                            .addComponent(barRAM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(barRAM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addGap(38, 38, 38)
@@ -210,36 +216,39 @@ public class GerenciadorProcessos extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         qtdClicks++;
         Double CPUatual = Math.random() * 101;
-        Integer CPUatualInt = CPUatual.intValue();
-        Double RAMatual = Math.random() * 8;
-        Double RAMatualBarFix = RAMatual * 12.5;
-        Integer RAMatualInt = RAMatualBarFix.intValue();
+        // Integer CPUatualInt = CPUatual.intValue();
+        Double RAMatual = Math.random() * 8000;
+        // Double RAMatualBarFix = RAMatual * 12.5;
+        //Integer RAMatualInt = RAMatualBarFix.intValue();
+        Double RAMatualGB = RAMatual / 1000;
         Double DISCOatual = Math.random() * 100;
-        Integer DISCOatualInt = DISCOatual.intValue();
+        //Integer DISCOatualInt = DISCOatual.intValue();
         
-        valCPU.setText(String.format("%d%% USO", CPUatualInt));
-        valRAM.setText(String.format("%d%% USO (%.2f GB de 8 GB)", RAMatualInt, RAMatual));
-        valDISCO.setText(String.format("%.1f MB/s de 100 MB/s", DISCOatual));
-        barCPU.setValue(CPUatualInt);
-        barRAM.setValue(RAMatualInt);
-        barDISCO.setValue(DISCOatualInt);
+        valCPU.setText(String.format("%d%% USO", CPUatual.intValue()));
+        valRAM.setText(String.format("%.2f GB", RAMatualGB));
+        valDISCO.setText(String.format("%.1f MB/s", DISCOatual));
         
-        if (CPUatualInt > maxValCPU) {
-            maxValCPU = CPUatualInt;
+        barCPU.setValue(CPUatual.intValue());
+        barRAM.setMaximum(8000);
+        barRAM.setValue(RAMatual.intValue());
+        barDISCO.setValue(DISCOatual.intValue());
+        
+        if (CPUatual.intValue() > maxValCPU) {
+            maxValCPU = CPUatual.intValue();
             maxCPU.setText(String.format("Máximo: %d %%", maxValCPU));
         }
-        if (CPUatualInt < minValCPU) {
-            minValCPU = CPUatualInt;
+        if (CPUatual.intValue() < minValCPU) {
+            minValCPU = CPUatual.intValue();
             minCPU.setText(String.format("Mínimo: %d %%", minValCPU));
         }
         
-        if (RAMatualInt > maxValRAM) {
-            maxValRAM = RAMatualInt;
-            maxRAM.setText(String.format("Máximo: %d %%", maxValRAM));
+        if (RAMatualGB > maxValRAM) {
+            maxValRAM = RAMatualGB;
+            maxRAM.setText(String.format("Máximo: %.2f GB", maxValRAM));
         }
-        if (RAMatualInt < minValRAM) {
-            minValRAM = RAMatualInt;
-            minRAM.setText(String.format("Mínimo: %d %%", minValRAM));
+        if (RAMatualGB < minValRAM) {
+            minValRAM = RAMatualGB;
+            minRAM.setText(String.format("Mínimo: %.2f GB", minValRAM));
         }
         
         if (DISCOatual > maxValDISCO) {
@@ -251,8 +260,8 @@ public class GerenciadorProcessos extends javax.swing.JFrame {
             minDISCO.setText(String.format("Mínimo: %.1f MB/s", minValDISCO));
         }
         
-        totalCPU += CPUatualInt;
-        totalRAM += RAMatualInt;
+        totalCPU += CPUatual.intValue();
+        totalRAM += RAMatualGB;
         totalDISCO += DISCOatual;
         
         avgValCPU = totalCPU / qtdClicks;
@@ -260,7 +269,7 @@ public class GerenciadorProcessos extends javax.swing.JFrame {
         avgValDISCO = totalDISCO / qtdClicks;
         
         avgCPU.setText(String.format("Média: %.1f %%", avgValCPU));
-        avgRAM.setText(String.format("Média: %.1f %%", avgValRAM));
+        avgRAM.setText(String.format("Média: %.2f GB", avgValRAM));
         avgDISCO.setText(String.format("Média: %.1f MB/s", avgValDISCO));
     }//GEN-LAST:event_jButton1ActionPerformed
 
